@@ -46,7 +46,7 @@ export function AddContact({ children, refreshContacts }: AddContactProps) {
 		refreshContacts();
 	};
 
-	const handleOpen = (value) => console.log(value);
+	const handleOpen = (value: unknown) => console.log(value);
 
 	useEffect(() => {
 		if (data) {

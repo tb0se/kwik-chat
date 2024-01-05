@@ -82,7 +82,7 @@ export function SignUpForm() {
 	}, [isError]);
 
 	useEffect(() => {
-		if (isSuccess) {
+		if (isSuccess && data) {
 			setUser(data);
 			setAuthenticated(true);
 			navigate(homeRoute);
