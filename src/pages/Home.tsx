@@ -1,26 +1,22 @@
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
-import { useAtom, useSetAtom } from "jotai";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { IconButton, Typography } from "@material-tailwind/react";
 import { MdAdd } from "react-icons/md";
 
 import { AddContact, ChatItem, Profile } from "@/components";
 import { SearchForm } from "@/forms";
-import { contactsAtom, contactsQueryAtom } from "@/state";
+import { authenticatedAtom, contactsAtom, contactsQueryAtom } from "@/state";
+import { signInRoute } from "@/routes";
 
 export function Home() {
-	// const setAuthenticated = useSetAtom(authenticatedAtom);
+	const authenticated = useAtomValue(authenticatedAtom);
 	const [{ data, refetch }] = useAtom(contactsQueryAtom);
 	const setContacts = useSetAtom(contactsAtom);
 
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	// const { authenticated } = useLoaderData();
-
-	// if (!authenticated) {
-	// setAuthenticated(authenticated);
-	// return <Navigate to={signInRoute} replace />;
-	// }
+	if (!authenticated) {
+		return <Navigate to={signInRoute} replace />;
+	}
 
 	useEffect(() => {
 		if (data) {

@@ -1,9 +1,14 @@
 import { atomWithQuery } from 'jotai-tanstack-query';
 import { atom } from 'jotai';
-import { atomWithStorage } from 'jotai/utils';
+import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 
 import { LoginData, RegisterData, getUsers, login, register } from '@/services';
 import { User } from '@/types';
+
+export const authenticatedAtom = atomWithStorage('authenticated', false);
+
+const storage = createJSONStorage(() => sessionStorage);
+export const rememberMeAtom = atomWithStorage('rememberMe', false, storage);
 
 export const userAtom = atomWithStorage<User | null>('user', null);
 

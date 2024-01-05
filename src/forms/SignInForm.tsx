@@ -18,8 +18,7 @@ import { useAtom, useSetAtom } from "jotai";
 
 import { homeRoute, signUpRoute } from "@/routes";
 import { Info, INFO_TYPE } from "@/components/Info";
-import { authenticatedAtom } from "@/utils/state";
-import { signInAtom, userAtom, userQueryAtom } from "@/state";
+import { authenticatedAtom, rememberMeAtom, signInAtom, userAtom, userQueryAtom } from "@/state";
 
 type SignInFormValues = {
 	username: string;
@@ -44,6 +43,7 @@ export function SignInForm() {
 		useAtom(userQueryAtom);
 	const setSignIn = useSetAtom(signInAtom);
 	const setAuthenticated = useSetAtom(authenticatedAtom);
+	const setRememberMe = useSetAtom(rememberMeAtom);
 	const setUser = useSetAtom(userAtom);
 	const navigate = useNavigate();
 
@@ -55,6 +55,7 @@ export function SignInForm() {
 		},
 		onSubmit: (values) => {
 			setSignIn(values);
+			setRememberMe(values.rememberMe);
 			refetch();
 		},
 		validationSchema: SignInSchema,

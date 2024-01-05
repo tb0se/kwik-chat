@@ -18,8 +18,8 @@ import { MdInfo } from "react-icons/md";
 
 import { homeRoute, signInRoute } from "@/routes";
 import { Info, INFO_TYPE } from "@/components";
-import { signUpAtom, signUpQueryAtom, userAtom } from "@/state";
-import { createAvatar, authenticatedAtom } from "@/utils";
+import { authenticatedAtom, signUpAtom, signUpQueryAtom, userAtom } from "@/state";
+import { createAvatar } from "@/utils";
 
 const SignUpSchema = Yup.object().shape({
 	username: Yup.string()

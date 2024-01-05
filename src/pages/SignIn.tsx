@@ -1,17 +1,14 @@
-import { Navigate, useLoaderData } from "react-router-dom";
-import { useSetAtom } from "jotai";
+import { Navigate } from "react-router-dom";
+import { useAtomValue } from "jotai";
+
 import { SignInForm } from "@/forms";
 import { homeRoute } from "@/routes";
-import { authenticatedAtom } from "@/utils";
+import { authenticatedAtom } from "@/state";
 
 export function SignIn() {
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	const { authenticated } = useLoaderData();
-	const setAuthenticated = useSetAtom(authenticatedAtom);
+	const authenticated = useAtomValue(authenticatedAtom);
 
 	if (authenticated) {
-		setAuthenticated(authenticated);
 		return <Navigate to={homeRoute} replace />;
 	}
 
