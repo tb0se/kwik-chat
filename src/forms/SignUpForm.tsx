@@ -111,7 +111,7 @@ export function SignUpForm() {
 				</Alert>
 			)}
 
-			<Card className="w-96">
+			<Card className="w-full max-w-96">
 				<CardHeader
 					variant="gradient"
 					color="gray"
@@ -195,7 +195,7 @@ export function SignUpForm() {
 								}
 							/>
 							{formik.touched.confirmPassword &&
-							formik.errors.confirmPassword ? (
+								formik.errors.confirmPassword ? (
 								<Info
 									type={INFO_TYPE.error}
 									text={formik.errors.confirmPassword}
@@ -212,7 +212,7 @@ export function SignUpForm() {
 								defaultChecked={formik.values.agreeToTermsAndConditions}
 							/>
 							{formik.touched.agreeToTermsAndConditions &&
-							formik.errors.agreeToTermsAndConditions ? (
+								formik.errors.agreeToTermsAndConditions ? (
 								<Info
 									type={INFO_TYPE.error}
 									text={formik.errors.agreeToTermsAndConditions}

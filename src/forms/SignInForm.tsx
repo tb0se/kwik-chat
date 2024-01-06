@@ -97,7 +97,7 @@ export function SignInForm() {
 				</Alert>
 			)}
 
-			<Card className="w-96">
+			<Card className="max-w-96 w-full">
 				<CardHeader
 					variant="gradient"
 					color="gray"

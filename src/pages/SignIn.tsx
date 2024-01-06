@@ -13,7 +13,7 @@ export function SignIn() {
 	}
 
 	return (
-		<main className="flex flex-col items-center justify-center w-full min-h-screen">
+		<main className="flex flex-col items-center justify-center w-full min-h-screen px-4">
 			<SignInForm />
 		</main>
 	);
