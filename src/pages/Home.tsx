@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { IconButton, Typography } from "@material-tailwind/react";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import { MdAdd } from "react-icons/md";
 
 import { AddContact, ChatItem, Profile } from "@/components";
@@ -13,6 +14,7 @@ export function Home() {
 	const authenticated = useAtomValue(authenticatedAtom);
 	const [{ data, refetch }] = useAtom(contactsQueryAtom);
 	const setContacts = useSetAtom(contactsAtom);
+	const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
 
 	if (!authenticated) {
 		return <Navigate to={signInRoute} replace />;
@@ -26,9 +28,9 @@ export function Home() {
 
 	return (
 		<div className="flex flex-1">
-			<aside className="flex flex-col p-4 max-w-60 border-r-2 border-solid border-charcoal h-full">
+			<aside className="flex flex-col p-4 w-full md:max-w-60 border-r-2 border-solid border-charcoal h-full">
 				<SearchForm />
-				<div className="w-full flex justify-between items-center">
+				<div className="w-full flex justify-between items-center ">
 					<Typography variant="paragraph" color="white">
 						Contacts
 					</Typography>
@@ -63,9 +65,7 @@ export function Home() {
 				</nav>
 				<Profile />
 			</aside>
-			<article className="flex flex-col w-full px-6 pt-4">
-				<Outlet />
-			</article>
+			{isSmallDevice ? null : <Outlet />}
 		</div>
 	);
 }

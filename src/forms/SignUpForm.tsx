@@ -18,7 +18,12 @@ import { MdInfo } from "react-icons/md";
 
 import { homeRoute, signInRoute } from "@/routes";
 import { Info, INFO_TYPE } from "@/components";
-import { authenticatedAtom, signUpAtom, signUpQueryAtom, userAtom } from "@/state";
+import {
+	authenticatedAtom,
+	signUpAtom,
+	signUpQueryAtom,
+	userAtom,
+} from "@/state";
 import { createAvatar } from "@/utils";
 
 const SignUpSchema = Yup.object().shape({
@@ -144,6 +149,7 @@ export function SignUpForm() {
 								inputMode="email"
 								autoComplete="email"
 								size="lg"
+								autoFocus
 								crossOrigin={undefined}
 								onChange={formik.handleChange}
 								value={formik.values.email}
@@ -189,7 +195,7 @@ export function SignUpForm() {
 								}
 							/>
 							{formik.touched.confirmPassword &&
-								formik.errors.confirmPassword ? (
+							formik.errors.confirmPassword ? (
 								<Info
 									type={INFO_TYPE.error}
 									text={formik.errors.confirmPassword}
@@ -206,7 +212,7 @@ export function SignUpForm() {
 								defaultChecked={formik.values.agreeToTermsAndConditions}
 							/>
 							{formik.touched.agreeToTermsAndConditions &&
-								formik.errors.agreeToTermsAndConditions ? (
+							formik.errors.agreeToTermsAndConditions ? (
 								<Info
 									type={INFO_TYPE.error}
 									text={formik.errors.agreeToTermsAndConditions}

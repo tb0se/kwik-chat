@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { ApiResponse, Contact } from '@/types';
-import { contactsUrl } from '@/utils';
+import axios from "axios";
+import { ApiResponse, Contact } from "@/types";
+import { contactsUrl } from "@/utils";
 
 type ContactsResponse = {
 	data: Contact[];
@@ -18,11 +18,11 @@ export const getContacts = async () => {
 		return [];
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			console.error('error message: ', error.message);
+			console.error("error message: ", error.message);
 			return [];
 		}
-		console.error('unexpected error: ', error);
-		throw new Error('Something happened. Please try again later');
+		console.error("unexpected error: ", error);
+		throw new Error("Something happened. Please try again later");
 	}
 };
 
@@ -34,9 +34,9 @@ export const addContact = async (username: string) => {
 			contactsUrl,
 			{ username },
 			{
-				headers: { 'Content-Type': 'application/json' },
+				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
-			}
+			},
 		);
 
 		if (response.status === 200 && response.data.ok) {
@@ -45,10 +45,10 @@ export const addContact = async (username: string) => {
 		return false;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			console.error('error message: ', error.message);
+			console.error("error message: ", error.message);
 			return false;
 		}
-		console.error('unexpected error: ', error);
-		throw new Error('Something happened. Please try again later');
+		console.error("unexpected error: ", error);
+		throw new Error("Something happened. Please try again later");
 	}
 };

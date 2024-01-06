@@ -11,6 +11,10 @@ import {
 import { chatRoute, homeRoute, signInRoute, signUpRoute } from ".";
 import { chatLoader } from "@/utils";
 
+const isMobile = window.matchMedia(
+	"only screen and (max-width: 760px)",
+).matches;
+
 const router = createBrowserRouter([
 	{
 		path: signInRoute,
@@ -31,14 +35,28 @@ const router = createBrowserRouter([
 				index: true,
 				element: <Landing />,
 			},
-			{
-				element: <Chat />,
-				path: chatRoute,
-				loader: chatLoader,
-				errorElement: <ErrorBoundary />,
-			},
+			...(isMobile
+				? []
+				: [
+						{
+							element: <Chat />,
+							path: chatRoute,
+							loader: chatLoader,
+							errorElement: <ErrorBoundary />,
+						},
+				  ]),
 		],
 	},
+	...(isMobile
+		? [
+				{
+					element: <Chat />,
+					path: chatRoute,
+					loader: chatLoader,
+					errorElement: <RootErrorBoundary />,
+				},
+		  ]
+		: []),
 ]);
 
 export default router;

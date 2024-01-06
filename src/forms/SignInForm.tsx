@@ -18,7 +18,13 @@ import { useAtom, useSetAtom } from "jotai";
 
 import { homeRoute, signUpRoute } from "@/routes";
 import { Info, INFO_TYPE } from "@/components/Info";
-import { authenticatedAtom, rememberMeAtom, signInAtom, userAtom, userQueryAtom } from "@/state";
+import {
+	authenticatedAtom,
+	rememberMeAtom,
+	signInAtom,
+	userAtom,
+	userQueryAtom,
+} from "@/state";
 
 type SignInFormValues = {
 	username: string;
@@ -111,6 +117,7 @@ export function SignInForm() {
 								inputMode="text"
 								autoComplete="nickname"
 								size="lg"
+								autoFocus
 								crossOrigin={undefined}
 								onChange={formik.handleChange}
 								value={formik.values.username}

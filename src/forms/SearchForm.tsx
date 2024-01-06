@@ -2,9 +2,9 @@ import { Button, Input } from "@material-tailwind/react";
 
 export function SearchForm() {
 	return (
-		<div className="flex items-center h-16 w-full">
-			<form>
-				<div className="relative flex w-full max-w-[24rem]">
+		<div className="flex items-center justify-center h-16 w-full">
+			<form className="w-full">
+				<div className="relative flex w-full md:max-w-[24rem]">
 					<Input
 						type="text"
 						label="Search"

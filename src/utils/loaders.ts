@@ -1,5 +1,5 @@
-import { LoaderFunctionArgs } from 'react-router-dom';
-import { getMessages } from '@/services';
+import { LoaderFunctionArgs } from "react-router-dom";
+import { getMessages } from "@/services";
 
 export const chatLoader = async ({ params }: LoaderFunctionArgs) => {
 	const { contactId } = params;

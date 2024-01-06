@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { ApiResponse, MessageResponse } from '@/types';
-import { messagesUrl } from '@/utils';
+import axios from "axios";
+import { ApiResponse, MessageResponse } from "@/types";
+import { messagesUrl } from "@/utils";
 
 type MessagesResponse = {
 	data: MessageResponse[];
@@ -12,7 +12,7 @@ export const getMessages = async (contactId: number) => {
 			`${messagesUrl}?contactId=${contactId}`,
 			{
 				withCredentials: true,
-			}
+			},
 		);
 
 		if (response.status === 200 && response.data.ok) {
@@ -21,10 +21,10 @@ export const getMessages = async (contactId: number) => {
 		return [];
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			console.error('error message: ', error.message);
+			console.error("error message: ", error.message);
 			return [];
 		}
-		console.error('unexpected error: ', error);
-		throw new Error('Something happened. Please try again later');
+		console.error("unexpected error: ", error);
+		throw new Error("Something happened. Please try again later");
 	}
 };

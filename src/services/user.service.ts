@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { loginUrl, registerUrl, usersUrl } from '@/utils';
-import { ApiResponse, User } from '@/types';
+import axios from "axios";
+import { loginUrl, registerUrl, usersUrl } from "@/utils";
+import { ApiResponse, User } from "@/types";
 
 export type LoginData = {
 	username: string;
@@ -15,7 +15,7 @@ type LoginResponse = {
 export const login = async (requestData: LoginData) => {
 	try {
 		const response = await axios.post<LoginResponse>(loginUrl, requestData, {
-			headers: { 'Content-Type': 'application/json' },
+			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		});
 
@@ -23,16 +23,16 @@ export const login = async (requestData: LoginData) => {
 		return data.data;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			console.error('error message: ', error.message);
+			console.error("error message: ", error.message);
 			switch (error.message) {
-				case 'Network Error':
-					throw new Error('Offline. Please try again.');
+				case "Network Error":
+					throw new Error("Offline. Please try again.");
 				default:
-					throw new Error('Incorrect credentials');
+					throw new Error("Incorrect credentials");
 			}
 		}
-		console.error('unexpected error: ', error);
-		throw new Error('Something happened. Please try again later');
+		console.error("unexpected error: ", error);
+		throw new Error("Something happened. Please try again later");
 	}
 };
 
@@ -51,24 +51,24 @@ export const register = async (requestData: RegisterData) => {
 			registerUrl,
 			requestData,
 			{
-				headers: { 'Content-Type': 'application/json' },
+				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
-			}
+			},
 		);
 		const { data } = response;
 		return data.data;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			console.error('error message: ', error.message);
+			console.error("error message: ", error.message);
 			switch (error.message) {
-				case 'Network Error':
-					throw new Error('Offline. Please try again.');
+				case "Network Error":
+					throw new Error("Offline. Please try again.");
 				default:
-					throw new Error('Incorrect credentials');
+					throw new Error("Incorrect credentials");
 			}
 		}
-		console.error('unexpected error: ', error);
-		throw new Error('Something happened. Please try again later');
+		console.error("unexpected error: ", error);
+		throw new Error("Something happened. Please try again later");
 	}
 };
 
@@ -88,10 +88,10 @@ export const getUsers = async () => {
 		return [];
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			console.error('error message: ', error.message);
+			console.error("error message: ", error.message);
 			return [];
 		}
-		console.error('unexpected error: ', error);
-		throw new Error('Something happened. Please try again later');
+		console.error("unexpected error: ", error);
+		throw new Error("Something happened. Please try again later");
 	}
 };
